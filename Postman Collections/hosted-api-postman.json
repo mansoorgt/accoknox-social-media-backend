@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "d84cb8f1-e57b-42a9-b9ce-fc8e3737f682",
+		"name": "Accoknox Social Media API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29222130"
+	},
+	"item": [
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ajmal@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Ajmal",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "muhammed",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/sign-up",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ajmal@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/login",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 0831e8aa538c8749044847cf38739ee70d2dd9ea",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "search-value",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "count",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/search",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 0831e8aa538c8749044847cf38739ee70d2dd9ea",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "receiver-email",
+							"value": "mansoorgt007@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/send-request",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"send-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pending Requests",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 8c5bf2dafd87440f45241051a50f7a9986d2075f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sender-email",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/get-pending-requests",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-pending-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 8c5bf2dafd87440f45241051a50f7a9986d2075f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sender-email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "request-status",
+							"value": "accept",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/update-friend-request",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"update-friend-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Friends",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 8c5bf2dafd87440f45241051a50f7a9986d2075f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://accoknox-social-media-backend.onrender.com/api/get-all-friends",
+					"protocol": "https",
+					"host": [
+						"accoknox-social-media-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-all-friends"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
