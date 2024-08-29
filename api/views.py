@@ -11,6 +11,7 @@ import json
 from django.core.paginator import Paginator
 from django.db.models import Q
 from api.models import *
+from itertools import chain
 # Create your views here.
 class LogOutView(APIView):
     pass
@@ -97,6 +98,7 @@ class UpdateFriendRequest(APIView):
         
         if request_status == 'accept':
             Friends.objects.filter(receiver=request.user,sender__email=sender_email).update(request_status=1)
+
         elif request_status == 'reject':
             Friends.objects.filter(receiver=request.user,sender__email=sender_email).update(request_status=2)
         else:
@@ -122,8 +124,12 @@ class GetAllFriends(APIView):
     permission_classes=[IsAuthenticated]
     
     def get(self,request):
-        friends=Friends.objects.filter(receiver=request.user,request_status=1).values_list("sender__id",flat=True)
-        serializer=UsersSerializer(data=User.objects.filter(id__in=friends),many=True)
+        
+        friends_senders=Friends.objects.filter(Q(receiver=request.user)|Q(sender=request.user)).filter(request_status=1).values_list("sender__id",flat=True)
+        friends_receivers=Friends.objects.filter(Q(receiver=request.user)|Q(sender=request.user)).filter(request_status=1).values_list("receiver__id",flat=True)
+        
+        
+        serializer=UsersSerializer(data=User.objects.filter(id__in=chain(friends_receivers,friends_senders)).exclude(id=request.user.id),many=True)
         serializer.is_valid()
         
         return Response({
